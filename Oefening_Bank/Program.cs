@@ -10,11 +10,13 @@ namespace Oefening_Bank
     {
         static void Main(string[] args)
         {
-            Rekening klant1 = new Rekening(747524091936ul, 0m, DateTime.Today);
+            Spaarrekening klant1 = new Spaarrekening(747524091936ul, 0m, DateTime.Today, 0.03m);
+            Zichtrekening klant2 = new Zichtrekening (747524091936ul, 0m, DateTime.Today, 1500);
+            klant1.Storten(1000);
             klant1.Afbeelden();
-            klant1.Storten(700);
-            klant1.Afbeelden();
-
+            Console.WriteLine();
+            klant2.Storten(125);
+            klant2.Afbeelden();
 
         }
     }

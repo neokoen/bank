@@ -53,7 +53,7 @@ namespace Oefening_Bank
             }
         }
 
-        public void Afbeelden()
+        public virtual void Afbeelden()
         {
             Console.WriteLine("Rekeningnummer: {0: 000-0000000-00}", RekeningNummer);
             Console.WriteLine("Saldo: {0}", Saldo);
@@ -73,7 +73,7 @@ namespace Oefening_Bank
 
         }
         
-
+       
 
 
     }
