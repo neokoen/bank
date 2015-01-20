@@ -8,7 +8,8 @@ namespace Oefening_Bank
 {
     class Rekening
     {
-        private long RekeningNummerValue;
+        private readonly DateTime EersteCreatie = new DateTime(1900, 1, 1);
+        private ulong RekeningNummerValue;
         private decimal SaldoValue;
         private DateTime CreatieDatumValue;
 
@@ -20,12 +21,12 @@ namespace Oefening_Bank
             }
             set
             {
-                if (value> new DateTime(1900,01,01))
+                if (value>= EersteCreatie)
                     CreatieDatumValue = value;
             }
         }
 
-        public long RekeningNummer
+        public ulong RekeningNummer
         {
             get
             {
@@ -33,10 +34,10 @@ namespace Oefening_Bank
             }
             set
             {
-                if (value>9999999999L)
+                ulong eerste10 = value / 100ul;
+                int laatste2 = (int)(value % 100ul);
+                if ((int) (eerste10 % 97ul) == laatste2)
                     RekeningNummerValue = value;
-
-
             }
         }
 
@@ -54,10 +55,12 @@ namespace Oefening_Bank
 
         public void Afbeelden()
         {
-            Console.WriteLine(RekeningNummer + " , " + Saldo + " ," + CreatieDatum);
+            Console.WriteLine("Rekeningnummer: {0: 000-0000000-00}", RekeningNummer);
+            Console.WriteLine("Saldo: {0}", Saldo);
+            Console.WriteLine("Creatiedatum: {0:dd-MM-yyyy}", CreatieDatum);
         }
 
-        public Rekening (long nummer, decimal saldo, DateTime creatieDatum)
+        public Rekening (ulong nummer, decimal saldo, DateTime creatieDatum)
         {
             RekeningNummer = nummer;
             Saldo = saldo;
